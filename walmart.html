@@ -6,7 +6,7 @@
 
 <select>
   <option value=""></option>
-  <option value="volvo">Volvo</option>
+  <option value="tires">Tires</option>
   <option value="saab">Saab</option>
   <option value="opel">Opel</option>
   <option value="audi">Audi</option>
@@ -36,12 +36,9 @@ git ID:
           $.each(data['items'], function(name2, value)
           {
              $("#result").append("<img src="+value.thumbnailImage+">");
+             $("#result").append(value.name);
              console.log(value.parentItemId);
           });
-          //console.log(data['items']);
-          //console.log(data[i]);
-          //$("#result").append(data.query);
-    
           }
 
 }
