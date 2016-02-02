@@ -6,12 +6,8 @@
 div
 {
   border-style: solid;
-    border-width: medium;
-}
-#result
-{
-   border-style: solid;
-    border-width: medium;
+  border-width: medium;
+  width:250px;
 }
 
   </style>
@@ -22,9 +18,9 @@ div
 <select>
   <option value=""></option>
   <option value="tires">Tires</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
+  <option value=""></option>
+  <option value=""></option>
+  <option value=""></option>
 </select>
 
 <br>
@@ -36,7 +32,10 @@ Your Results:
 <script>
     $(document).ready(function(){
       var urls = "http://api.walmartlabs.com/v1/search?apiKey=2w9xg6wasagm2atc99qn8fjg&query=tires&categoryId=91083_1074767_1072089&sort=price&ord=asc";
-    
+    //if("#value"=="Submit")
+   // {
+
+    //}   
     $("#button").click(
     function(e){
       //url += $("#category").val();
@@ -51,7 +50,8 @@ Your Results:
           $.each(data['items'], function(name2, value)
           {
              $("#result").append("<div><img src="+value.thumbnailImage+"></div>");
-             $("#result").append(value.name);
+             $("#result").append("<div>"+value.name+"</div>");
+             $("#result").append("<div>"+value.salePrice+"</div>");
              console.log(value.parentItemId);
           });
           }
@@ -59,6 +59,8 @@ Your Results:
 }
     )
     });
+
+
     })
 </script>
     </html>
