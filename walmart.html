@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<p>Walmart APP! </p>
+
+<select>
+  <option value=""></option>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
+<br>
+<input id="button" type="submit" value="Submit">
+<br>
+<p id="result">
+git ID: 
+</p>
+<script>
+    $(document).ready(function(){
+      var urls = "http://api.walmartlabs.com/v1/search?apiKey=2w9xg6wasagm2atc99qn8fjg&query=tires&categoryId=91083_1074767_1072089&sort=price&ord=asc";
+    
+    $("#button").click(
+    function(e){
+      //url += $("#category").val();
+      console.log("Hello");
+      $.ajax({
+        // console.log("Walmart");
+        url: urls,
+          dataType: 'jsonp',
+          success: function( data ){
+            console.log("Hello from data");
+            console.log(data);
+          $.each(data['items'], function(name2, value)
+          {
+             $("#result").append("<img src="+value.thumbnailImage+">");
+             console.log(value.parentItemId);
+          });
+          //console.log(data['items']);
+          //console.log(data[i]);
+          //$("#result").append(data.query);
+    
+          }
+
+}
+    )
+    });
+    })
+</script>
+    </html>
