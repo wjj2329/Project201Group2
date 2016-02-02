@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<head>
+  <style>
+div
+{
+  border-style: solid;
+    border-width: medium;
+}
+#result
+{
+   border-style: solid;
+    border-width: medium;
+}
+
+  </style>
+  </head>
 
 <p>Walmart APP! </p>
 
@@ -16,7 +31,7 @@
 <input id="button" type="submit" value="Submit">
 <br>
 <p id="result">
-git ID: 
+Your Results: 
 </p>
 <script>
     $(document).ready(function(){
@@ -35,7 +50,7 @@ git ID:
             console.log(data);
           $.each(data['items'], function(name2, value)
           {
-             $("#result").append("<img src="+value.thumbnailImage+">");
+             $("#result").append("<div><img src="+value.thumbnailImage+"></div>");
              $("#result").append(value.name);
              console.log(value.parentItemId);
           });
