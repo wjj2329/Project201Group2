@@ -3,6 +3,14 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <head>
   <style>
+  .items
+  {
+    width:150px;
+  }
+  #bothboxes
+  {
+    text-align: center;
+  }
   h1{
     text-align: center;
   }
@@ -35,7 +43,7 @@ div
  <h1>Welcome to our Walmart APP! </h1>
 </div>
 
-
+<div id="bothboxes">
 <select id="dropdown">
   <option value="91083_3947">Auto Electronics</option>
   <option value="91083_1074767_1072089">Tires</option>
@@ -58,9 +66,20 @@ div
 <br>
 <input id="button" type="submit" value="Submit">
 <br>
+</div>
 <p id="result">
 Your Results: 
 </p>
+<a class="twitter-timeline"
+  data-widget-id="694991653145153536"
+  href="https://twitter.com/Walmart"
+  width="300"
+  height="300">
+Tweets by @Walmart
+</a>
+<div id="fb-root"></div>
+<div class="fb-like" data-href="https://www.facebook.com/walmart" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
 <script>
     $(document).ready(function(){
 
@@ -75,13 +94,6 @@ Your Results:
 
       //document.getElementById("result").<html>
        document.getElementById("result").innerHTML = ""
-      
-    //if("#value"=="Submit")
-   // {
-
-    //}   
-
-      //url += $("#category").val();
       console.log("Hello");
       $.ajax({
         // console.log("Walmart");
@@ -94,9 +106,9 @@ Your Results:
             $("#result")
           $.each(data['items'], function(name2, value)
           {
-             $("#result").append("<div><img src="+value.thumbnailImage+"></div>");
-             $("#result").append("<div>"+value.name+"</div>");
-             $("#result").append("<div>"+value.salePrice+"</div>");
+             $("#result").append("<div class='items'><img src="+value.thumbnailImage+"><br>"+value.name+"<br>" + value.salePrice+"</div>");
+//             $("#result").append("<div>"+value.name+"</div>");
+  //           $("#result").append("<div>"+value.salePrice+"</div>");
              console.log(value.parentItemId);
           });
           }
@@ -107,5 +119,40 @@ Your Results:
 
 
     })
+
+//twitter javascript
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+ 
+  return t;
+}(document, "script", "twitter-wjs"));
+
+//facebook javascript
+
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1547718598874768";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+
 </script>
     </html>
