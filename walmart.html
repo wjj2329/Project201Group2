@@ -3,6 +3,13 @@
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <head>
   <style>
+  #facebook{
+    float: right;
+  }
+  body{
+    background-color:rgb(207, 221, 230);
+   background-size: 100%;
+  }
   .items
   {
     width:150px;
@@ -38,11 +45,27 @@ div
 
   </style>
   </head>
-
+<body>
 <div class="content">
  <h1>Welcome to our Walmart APP! </h1>
 </div>
+<a class="twitter-timeline"
+  data-widget-id="694991653145153536"
+  href="https://twitter.com/Walmart"
+  width="300"
+  height="300">
+Tweets by @Walmart
+</a>
 
+<div id="facebook">
+<div id="fb-root"></div>
+
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="www.walmart.com" data-counter="top"></script>
+
+
+<div class="fb-like" data-href="https://www.facebook.com/walmart" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+</div>
 <div id="bothboxes">
 <select id="dropdown">
   <option value="91083_3947">Auto Electronics</option>
@@ -70,16 +93,7 @@ div
 <p id="result">
 Your Results: 
 </p>
-<a class="twitter-timeline"
-  data-widget-id="694991653145153536"
-  href="https://twitter.com/Walmart"
-  width="300"
-  height="300">
-Tweets by @Walmart
-</a>
-<div id="fb-root"></div>
-<div class="fb-like" data-href="https://www.facebook.com/walmart" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-
+</body>
 <script>
     $(document).ready(function(){
 
@@ -106,7 +120,7 @@ Tweets by @Walmart
             $("#result")
           $.each(data['items'], function(name2, value)
           {
-             $("#result").append("<div class='items'><img src="+value.thumbnailImage+"><br>"+value.name+"<br>" + value.salePrice+"</div>");
+             $("#result").append("<div class='items'><img src="+value.thumbnailImage+"><br>"+value.name+"<br>Price: " + value.salePrice+value.shortDescription+"</div>");
 //             $("#result").append("<div>"+value.name+"</div>");
   //           $("#result").append("<div>"+value.salePrice+"</div>");
              console.log(value.parentItemId);
