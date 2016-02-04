@@ -2,6 +2,9 @@
 <html>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <head>
+<title>
+  Walmart Fan Club
+</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -10,71 +13,8 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
-  <style>
-  .fb-like{
-    width:20%;
-  }
-  #result
-  {
-       background-image: url("http://www.jeffreyhollender.com/wp-content/uploads/2010/12/WalMartIcon.jpg"); 
-       background-repeat: no-repeat;
-        float:right;
-        width:45%;
-        height:500px;
-
-  }
-  #title
-  {
-      float:right;
-      font-size: 40px;
-  }
-  .logo{
-    position: relative;
-    display:inline;
-    padding: 10px;
-  }
-  #social{
-    width:25%;
-    height:500px;
-   
-  }
-  body{
-   
-   background-size: 120%;
-   background-image: url("http://p1.pichost.me/i/17/1398213.jpg");
-  }
-  #bothboxes
-  {
-    
-        margin: 0 auto; 
-
-    max-width: 50%;
-    text-align: center;
-  }
-  h1{
-    text-align: center;
-  }
-.content {
-    width:100%;
-    background-image: url("https://www.walmartbrandcenter.com/uploadedImages/BrandCenter/Content/downloads/Logos/specifications/specifications-logo3.jpg?n=2187");
-    height: 100px;
-     border: 1px solid #CCC;
-    margin: 2px auto;
-  }
-  #dropdown
-  {
-    font-size: 17px;
-      
-  }
-.items
-{
-  font-size: 16px;
-  border-color:black;
-  padding: 20px; 
-}
-
-  </style>
+<script type="text/javascript" src="javscriptthings.js"></script>
+<link rel="stylesheet" type="text/css" href="css-styling.css">
   </head>
 <body>
 <div class="content">
@@ -95,19 +35,22 @@
   <option value="5440">Pets</option>
   <option value="4171">Toys</option>
 </select>
-<br>
   <form>
   <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
 </form> 
-<input id="button" type="submit" class='btn btn-primary' value="Submit">
+<br>
+<input id="button" type="submit" class='btn btn-success' value="Submit">
 
-<br><br><br>
+<br><br>
 </div>
 <p id="title">
-    WE WANT YOUR MONEY! PLEASE START SHOPPING
+    
 </p>
 <p id="result">
+WE WANT YOUR MONEY! PLEASE START SHOPPING
 
+<br>
+<img src="http://www.jeffreyhollender.com/wp-content/uploads/2010/12/WalMartIcon.jpg">
 </p>
 <div id="social">
   <div class="logo">
@@ -135,81 +78,7 @@ Tweets by @Walmart
 </div>
 </body>
 <script>
-    $(document).ready(function(){
-
-    $("#button").click(
-    function(e){
-      var myCategory = document.getElementById("dropdown").value;
-       
-     var myQuery = document.getElementById("inputbox").value;
-   // var urls=  "http://api.walmartlabs.com/v1/search?apiKey=2w9xg6wasagm2atc99qn8fjg&query=tires&categoryId=91083_1074767_1072089&sort=price&ord=asc"
-      var urls = "http://api.walmartlabs.com/v1/search?apiKey=2w9xg6wasagm2atc99qn8fjg&query="+myQuery+"&categoryId="+ myCategory +"&sort=price&ord=asc";
-      console.log(urls);
-
-      //document.getElementById("result").<html>
-       document.getElementById("result").innerHTML = ""
-      console.log("Hello");
-      $.ajax({
-        // console.log("Walmart");
-        url: urls,
-          dataType: 'jsonp',
-          success: function( data ){
-
-            console.log("Hello from data");
-            console.log(data);
-            $("#result")
-          $.each(data['items'], function(name2, value)
-          {
-             $("#result").append("<div class='items'><strong>"+value.name+"</strong><br><br><img src="+value.largeImage+"><br><br>Price: <strong>$" + value.salePrice+"</strong> <p></p><a href="+value.addToCartUrl+"><button type='button' class='btn btn-primary'>Click here to Buy</button></a></div><br><br>");
-             console.log(value.parentItemId);
-          });
-
-           document.getElementById("result").style.backgroundImage="none";
-          document.getElementById("result").style.backgroundColor= "white";
-           document.getElementById("result").style.float="right";
-            document.getElementById("result").style.width="65%";
-             document.getElementById("result").style.height="500px";
-             document.getElementById("result").style.overflow= "scroll";
-
-
-
-          }
-
-}
-    )
-    });
-
-
-    })
-
-//twitter javascript
-window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
- 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
- 
-  return t;
-}(document, "script", "twitter-wjs"));
-
-//facebook javascript
-
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1547718598874768";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
+    
 
 
 
