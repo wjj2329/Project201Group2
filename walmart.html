@@ -2,72 +2,87 @@
 <html>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
   <style>
-  #facebook{
-    float: right;
+  .fb-like{
+    width:20%;
+  }
+  #result
+  {
+       background-image: url("http://www.jeffreyhollender.com/wp-content/uploads/2010/12/WalMartIcon.jpg"); 
+       background-repeat: no-repeat;
+        float:right;
+        width:45%;
+        height:500px;
+
+  }
+  #title
+  {
+      float:right;
+      font-size: 40px;
+  }
+  .logo{
+    position: relative;
+    display:inline;
+    padding: 10px;
+  }
+  #social{
+    width:25%;
+    height:500px;
+   
   }
   body{
-    background-color:rgb(207, 221, 230);
-   background-size: 100%;
-  }
-  .items
-  {
-    width:150px;
+   
+   background-size: 120%;
+   background-image: url("http://p1.pichost.me/i/17/1398213.jpg");
   }
   #bothboxes
   {
+    
+        margin: 0 auto; 
+
+    max-width: 50%;
     text-align: center;
   }
   h1{
     text-align: center;
   }
-  .banner {
-    width:100%;
-    position:fixed;
-    top:0px;
-    height: 200px;
-}
 .content {
     width:100%;
-    background: blue;
-    height: 50px;
+    background-image: url("https://www.walmartbrandcenter.com/uploadedImages/BrandCenter/Content/downloads/Logos/specifications/specifications-logo3.jpg?n=2187");
+    height: 100px;
      border: 1px solid #CCC;
     margin: 2px auto;
   }
   #dropdown
   {
+    font-size: 17px;
       
   }
-div
+.items
 {
-  padding: 2px; 
+  font-size: 16px;
+  border-color:black;
+  padding: 20px; 
 }
 
   </style>
   </head>
 <body>
 <div class="content">
- <h1>Welcome to our Walmart APP! </h1>
 </div>
-<a class="twitter-timeline"
-  data-widget-id="694991653145153536"
-  href="https://twitter.com/Walmart"
-  width="300"
-  height="300">
-Tweets by @Walmart
-</a>
 
-<div id="facebook">
-<div id="fb-root"></div>
-
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="www.walmart.com" data-counter="top"></script>
-
-
-<div class="fb-like" data-href="https://www.facebook.com/walmart" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-</div>
 <div id="bothboxes">
-<select id="dropdown">
+<select class="form-control" id="dropdown">
+  <option > (Choose your category)</option>
   <option value="91083_3947">Auto Electronics</option>
   <option value="91083_1074767_1072089">Tires</option>
   <option value="3920">Books</option>
@@ -80,19 +95,44 @@ Tweets by @Walmart
   <option value="5440">Pets</option>
   <option value="4171">Toys</option>
 </select>
-
+<br>
   <form>
-  Search Item:
-  <input id="inputbox" type="text" name="searchitem"><br>
+  <h3>Search Item:</h3> <input id="inputbox" type="text" class="form-control" name="searchitem">
 </form> 
+<input id="button" type="submit" class='btn btn-primary' value="Submit">
 
-<br>
-<input id="button" type="submit" value="Submit">
-<br>
+<br><br><br>
 </div>
-<p id="result">
-Your Results: 
+<p id="title">
+    WE WANT YOUR MONEY! PLEASE START SHOPPING
 </p>
+<p id="result">
+
+</p>
+<div id="social">
+  <div class="logo">
+<a class="twitter-timeline"
+  data-widget-id="694991653145153536"
+  href="https://twitter.com/Walmart"
+  width="300"
+  height="300">
+Tweets by @Walmart
+</a>
+</div>
+<br>
+<br>
+
+<div class="logo">
+<div id="fb-root"></div>
+
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="www.walmart.com" data-counter="top"></script>
+
+
+<div class="fb-like" data-href="https://www.facebook.com/walmart" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+</div>
+
+</div>
 </body>
 <script>
     $(document).ready(function(){
@@ -120,11 +160,19 @@ Your Results:
             $("#result")
           $.each(data['items'], function(name2, value)
           {
-             $("#result").append("<div class='items'><img src="+value.thumbnailImage+"><br>"+value.name+"<br>Price: " + value.salePrice+value.shortDescription+"</div>");
-//             $("#result").append("<div>"+value.name+"</div>");
-  //           $("#result").append("<div>"+value.salePrice+"</div>");
+             $("#result").append("<div class='items'><strong>"+value.name+"</strong><br><br><img src="+value.largeImage+"><br><br>Price: <strong>$" + value.salePrice+"</strong> <p></p><a href="+value.addToCartUrl+"><button type='button' class='btn btn-primary'>Click here to Buy</button></a></div><br><br>");
              console.log(value.parentItemId);
           });
+
+           document.getElementById("result").style.backgroundImage="none";
+          document.getElementById("result").style.backgroundColor= "white";
+           document.getElementById("result").style.float="right";
+            document.getElementById("result").style.width="65%";
+             document.getElementById("result").style.height="500px";
+             document.getElementById("result").style.overflow= "scroll";
+
+
+
           }
 
 }
