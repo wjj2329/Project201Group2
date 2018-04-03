@@ -5,7 +5,6 @@ $(document).ready(function(){
       var myCategory = document.getElementById("dropdown").value;
        
      var myQuery = document.getElementById("inputbox").value;
-   // var urls=  "http://api.walmartlabs.com/v1/search?apiKey=2w9xg6wasagm2atc99qn8fjg&query=tires&categoryId=91083_1074767_1072089&sort=price&ord=asc"
       var urls = "http://api.walmartlabs.com/v1/search?apiKey=2w9xg6wasagm2atc99qn8fjg&query="+myQuery+"&categoryId="+ myCategory +"&sort=price&ord=asc";
       console.log(urls);
 
@@ -69,14 +68,3 @@ window.twttr = (function(d, s, id) {
  
   return t;
 }(document, "script", "twitter-wjs"));
-
-//facebook javascript
-
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=1547718598874768";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));

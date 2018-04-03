@@ -68,22 +68,20 @@ Tweets by @Walmart
 <div class="logo">
 <div id="fb-root"></div>
 
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script type="IN/Share" data-url="www.walmart.com" data-counter="top"></script>
 
-
-<div class="fb-like" data-href="https://www.facebook.com/walmart" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-</div>
 
 </div>
 </body>
+  
 <script>
-    
-
-
-
-
-
-
+var input = document.getElementById("inputbox");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        console.log("enter is pressed");
+        document.getElementById("button").click();
+    }
+});
 </script>
+
     </html>
